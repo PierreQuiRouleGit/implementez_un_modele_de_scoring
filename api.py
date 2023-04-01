@@ -82,9 +82,9 @@ for i in range(len(df)):
 df.loc[df['TARGET'].isna(),'TARGET'] = 0.5
 
 #id
-input_id = st.text_input('Write SK_ID_CURR')
+input_id = st.number_input('Write SK_ID_CURR',format="%i")
 
-if int(input_id) in list_id:
+if input_id in list_id:
     if (df.loc[df['SK_ID_CURR']==int(input_id),'TARGET'].values[0] == 1.0) or (df.loc[df['SK_ID_CURR']==int(input_id),'TARGET'].values[0] == 0.0) :
         st.subheader('Load Validation(0 good - 1 bad)')
         fig = go.Figure(go.Indicator(
