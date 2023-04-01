@@ -37,21 +37,41 @@ from lime import lime_tabular
 
 
 #data characteristics
-df = pd.read_csv("df_merge.csv")
+@st.cache_data
+def load_df():
+    df = pd.read_csv("df_merge.csv")
+    return df
+
+df = load_df()
+
 
 #data predict
-df_test_copy = pd.read_csv("df_test.csv")
+@st.cache_data
+def load_df_test_copy():
+    df_test_copy = pd.read_csv("df_test.csv")
+    return df_test_copy
+
+df_test_copy = load_df_test_copy()
 
 
-df_test = pd.read_csv("df_test_transformed.csv")
+@st.cache_data
+def load_df_test():
+    df_test = pd.read_csv("df_test_transformed.csv")
+    df_test.drop(columns=['Unnamed: 0'],inplace=True)
+    return df_test
 
-df_test.drop(columns=['Unnamed: 0'],inplace=True)
+df_test = load_df_test()
+
 
 
 #best model
-pickle_model = open('model.pkl', 'rb') 
-clf = pickle.load(pickle_model)
+@st.cache_resource
+def load_model():
+    pickle_model = open('model.pkl', 'rb') 
+    clf = pickle.load(pickle_model)
+    return clf
 
+clf = load_model()
 
 
 list_id = []
