@@ -39,7 +39,7 @@ from lime import lime_tabular
 #data characteristics
 @st.cache_data
 def load_df():
-    df = pd.read_csv("df_merge.csv")
+    df = pd.read_csv("df_merge_sample.csv")
     return df
 
 df = load_df()
@@ -48,7 +48,7 @@ df = load_df()
 #data predict
 @st.cache_data
 def load_df_test_copy():
-    df_test_copy = pd.read_csv("df_test.csv")
+    df_test_copy = pd.read_csv("df_test_sample.csv")
     return df_test_copy
 
 df_test_copy = load_df_test_copy()
@@ -56,7 +56,8 @@ df_test_copy = load_df_test_copy()
 
 @st.cache_data
 def load_df_test():
-    df_test = pd.read_csv("df_test_transformed.csv")
+    df_test = pd.read_csv("df_test_transformed_sample.csv")
+    df_test.drop(columns=['Unnamed: 0'],inplace=True)
     return df_test
 
 df_test = load_df_test()
