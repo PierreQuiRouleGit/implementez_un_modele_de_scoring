@@ -15,3 +15,4 @@ seaborn==0.12.2
 shap==0.41.0
 streamlit==1.20.0
 xgboost==1.7.4
+flask==2.2.3
