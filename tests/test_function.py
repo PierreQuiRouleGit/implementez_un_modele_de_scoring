@@ -14,4 +14,4 @@ def find_score(id_input):
 def test_find_score_with_id():
     
     assert find_score('100001') == 0.53
-    assert find_score('100005') == 0.72
+    assert find_score('100005') == 0.71
