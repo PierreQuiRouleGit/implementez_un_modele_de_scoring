@@ -7,6 +7,7 @@ import time
 
 import streamlit as st
 
+from urllib.request import urlopen
 
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_val_score, learning_curve, StratifiedKFold
 from sklearn.metrics import *
@@ -83,6 +84,9 @@ df.loc[df['TARGET'].isna(),'TARGET'] = 0.5
 
 #id
 input_id = st.number_input('Write SK_ID_CURR',format="%i")
+
+
+
 
 if input_id in list_id:
     if (df.loc[df['SK_ID_CURR']==int(input_id),'TARGET'].values[0] == 1.0) or (df.loc[df['SK_ID_CURR']==int(input_id),'TARGET'].values[0] == 0.0) :
@@ -379,7 +383,7 @@ if input_id in list_id:
 
         fig = go.Figure(go.Indicator(
         mode = "gauge+number",
-        value = round(proba[df_test_copy.loc[df_test_copy['SK_ID_CURR']==int(input_id)].index.item()][0],2),
+        value = round(proba[df_test_copy.loc[df_test_copy['SK_ID_CURR']==int(input_id)].index.item()][1],2),
         domain = {'x': [0, 1], 'y': [0, 1]},
         gauge = { 'axis': {'range': [0, 1]},
             'bar' :{'color': "black"},
