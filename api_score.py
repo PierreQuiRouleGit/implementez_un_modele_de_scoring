@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
 from flask import Flask, render_template, jsonify, request, flash, redirect, url_for
-
+from flask_ngrok import run_with_ngrok
 import pickle
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 
 app = Flask(__name__)
+run_with_ngrok(app)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '11111111111'
 
@@ -80,5 +83,5 @@ def credit(id_client):
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
